@@ -1,5 +1,10 @@
 import { v } from "convex/values";
-import { internalMutation, MutationCtx, QueryCtx, query } from "../_generated/server";
+import {
+  internalMutation,
+  MutationCtx,
+  QueryCtx,
+  query,
+} from "../_generated/server";
 
 export const get = query({
   handler: async (ctx) => {
@@ -41,7 +46,7 @@ export const remove = internalMutation({
   },
 });
 
-const getCurrentUser = async (ctx: QueryCtx | MutationCtx) => {
+export const getCurrentUser = async (ctx: QueryCtx | MutationCtx) => {
   const identity = await ctx.auth.getUserIdentity();
   if (!identity) {
     return null;
